@@ -1,0 +1,159 @@
+#doc-content-menu li {
+    list-style: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.docly-header {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+:root {
+    --color-primary: #121212;
+}
+
+body {
+    color: white;
+}
+
+.doc-header {
+    
+    gap: 20px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: 40px;
+}
+
+.doc-header__content {
+    max-width: 1180;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.doc-main {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1180;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+.doc-heading {
+    font-size: 1rem;
+    color: rgb(120 120 120);
+}
+
+.doc-nav {
+    flex-basis: 200px;
+    min-width: 180px;
+    flex-grow: 0;
+    height: 400px;
+    overflow-y: auto;
+}
+
+.doc-link-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-left: solid 1px rgb(180 180 180);
+    margin: 0 0 0 0;
+    padding: 0 0 0 20px;
+}
+
+.doc-link {
+    cursor: pointer;
+}
+
+#doc-content {
+    flex-grow: 1;
+}
+
+
+
+#doc-content-heading {
+    color: #C71585;
+}
+
+#doc-content-title {
+    font-size: 1.5rem;
+    margin: 8px 0;
+}
+
+.docly-headings {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+}
+
+.docly-links {
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    padding: 8px 0 8px 32px;
+}
+
+.docly-link__a {
+    font-size: 0.9rem;
+}
+
+.docly-navigation {
+    flex-basis: 30%;
+    min-width: 200px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    padding: 16px 32px;
+    box-sizing: border-box;
+}
+
+.docly-heading__title {
+    font-size: 0.9rem;
+    color: rgb(220 220 200);
+    font-weight: 600;
+}
+
+.doc-content-menu {
+    flex-basis: 25%;
+    min-width: 180px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    padding: 16px 32px;
+    box-sizing: border-box;
+}
+
+.doc-content-menu__sticky {
+    overflow-y: auto;
+    position: sticky;
+    right: 0;
+    top: 4rem;
+}
+
+.doc-content-menu__heading {
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.doc-content-menu__list {
+    padding: 8px 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.doc-content-menu__item .doc-content-menu__list {
+    margin-left: 16px;
+}
+
+.doc-content-menu__item {
+    font-size: 0.875rem;
+    font-weight: 500;
+}
