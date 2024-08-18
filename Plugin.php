@@ -19,6 +19,7 @@ class Plugin {
         require_once DOCLY_PATH . 'lib/DocPostType.php';
         require_once DOCLY_PATH . 'lib/DocPostModel.php';
         require_once DOCLY_PATH . 'lib/DocNav.php';
+        require_once DOCLY_PATH . 'lib/Template.php';
 
         // Instantiate the DocPostType class
         new \App\PostTypes\DocPostType();

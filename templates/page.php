@@ -8,22 +8,11 @@
 <?php 
 
 $nav = new \Docly\DocNav;
+$template = new \Docly\Template;
 
 ?>
 
-<?php get_header(); ?>
-
-<header class="docly-header">
-    <div class="docly-logo">
-        DOCLY
-    </div>
-    <div class="docly-search">
-        <input type="text" id="docly-search-input" placeholder="Search docs..."/>
-    </div>
-    <div class="docly-buttons">
-        <button>GITHUB</button>
-    </div>
-</header>
+<?php $template->render_header(); ?>
 
 <main class="doc-main">
     <?php $nav->render(); ?>
@@ -47,7 +36,7 @@ $nav = new \Docly\DocNav;
     </div>
 </template>
 
-<?php get_footer(); ?>
+<?php $template->render_footer(); ?>
 
 <script>
     class DoclyModal {
