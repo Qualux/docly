@@ -177,7 +177,39 @@ body {
 
 .docly-search__input {
     border-radius: 8px;
-    padding: 6px;
+    padding: 16px 24px;
     border: none;
     font-size: 1.25rem;
+    background-color: rgb(50 50 50);
+    outline: none;
+    box-shadow: none;
+    min-width: 320px;
+}
+
+
+
+
+.docly-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(0 0 0 / 0.9);
+}
+
+.docly-modal__header {
+    margin: 0 0 32px 0;
+    display: flex; 
+    align-items: center;
+    justify-content: end;
+}
+
+.docly-modal__content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 420px;
+    height: 50vh;
+    overflow-y: auto;
 }

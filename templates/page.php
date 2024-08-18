@@ -24,13 +24,18 @@ $template = new \Docly\Template;
 
 <template id="docly-search-modal">
     <div class="docly-modal">
-        <header>
-            <button id="docly-close-modal">Close</button>
-        </header>
-        <div>
-            <input id="docly-search-input" type="text"/>
+        <div class="docly-modal__content">
+            <div>
+                <input 
+                    id="docly-search-input" 
+                    class="docly-search__input" 
+                    type="text" 
+                    placeholder="Search docs..."
+                    autocomplete="off"
+                />
+            </div>
+            <div class="docly-search-results"></div>
         </div>
-        <div class="docly-search-results"></div>
     </div>
 </template>
 

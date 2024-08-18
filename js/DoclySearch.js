@@ -36,6 +36,8 @@ class DoclySearch {
 
         // Set initialized to true to prevent re-initialization
         this.initialized = true;
+
+        this.modal.addEventListener('click', (event) => this.handleClickAway(event));
     }
 
     closeModal() {
@@ -85,6 +87,13 @@ class DoclySearch {
     clearSearchInput() {
         if (this.searchInput) {
             this.searchInput.value = '';
+        }
+    }
+
+    handleClickAway(event) {
+        // Check if the clicked element is exactly the .docly-modal (not a child element)
+        if (event.target === this.modal) {
+            this.closeModal();
         }
     }
 
