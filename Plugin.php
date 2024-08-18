@@ -25,6 +25,7 @@ class Plugin {
 
         // Enqueue DocController JS.
         add_action('wp_enqueue_scripts', function() {
+
             wp_enqueue_script(
                 'docly-doc-controller', 
                 DOCLY_URL . '/js/DocController.js', 
@@ -57,32 +58,34 @@ class Plugin {
         add_filter('theme_page_templates', [$this, 'register_page_template']);
 
         // Load the correct template
-        add_filter('single_template', [$this, 'template']);
-        add_filter('template_include', [$this, 'load_page_template']);
+        add_filter('template_include', [$this, 'template']);
     }
 
     public function register_page_template($templates) {
-        $templates['docly-template.php'] = __('Documentation Page', 'docly');
-        return $templates;
-    }
 
-    public function load_page_template($template) {
-        $override_template = locate_template('docly/page.php');
-        if ($override_template) {
-            return $override_template;
-        }
-        return DOCLY_PATH . 'templates/page.php';
+        $templates['doc_page'] = __('Documentation Page', 'docly');
+        return $templates;
+        
     }
     
-    public function template($template) {
-        if (is_singular('doc')) {
-            $override_template = locate_template('docly/single-doc.php');
+    public function template( $template ) {
+
+        $template_slug = get_page_template_slug();
+
+        if ( $template_slug === 'doc_page' ) {
+
+            $override_template = locate_template('docly/page.php');
+
             if ($override_template) {
                 return $override_template;
             }
-            return DOCLY_PATH . 'templates/single-doc.php';
+
+            return DOCLY_PATH . 'templates/page.php';
+
         }
+
         return $template;
+
     }
     
 }
