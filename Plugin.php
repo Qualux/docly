@@ -6,6 +6,9 @@
 
 namespace Docly;
 
+use Carbon_Fields\Container;
+use Carbon_Fields\Field;
+
 // Define constants
 define('DOCLY_URL', plugin_dir_url(__FILE__));
 define('DOCLY_PATH', plugin_dir_path(__FILE__));
@@ -20,6 +23,19 @@ class Plugin {
         require_once DOCLY_PATH . 'lib/DocPostModel.php';
         require_once DOCLY_PATH . 'lib/DocNav.php';
         require_once DOCLY_PATH . 'lib/Template.php';
+
+        add_action( 'after_setup_theme', function() {
+            require_once( DOCLY_PATH . 'vendor/autoload.php' );
+            \Carbon_Fields\Carbon_Fields::boot();
+        });
+
+        add_action( 'carbon_fields_register_fields', function() {
+            Container::make( 'theme_options', __( 'Docly', 'crb' ) )
+                ->add_fields( array(
+                    Field::make( 'text', 'crb_text', 'Text Field' ),
+                )
+            );
+        });
 
         // Instantiate the DocPostType class
         new \App\PostTypes\DocPostType();
@@ -38,6 +54,14 @@ class Plugin {
             wp_enqueue_script(
                 'docly-doc-content-menu-generator', 
                 DOCLY_URL . '/js/ContentMenuGenerator.js', 
+                [], 
+                DOCLY_VERSION, 
+                true // Load in footer
+            );
+
+            wp_enqueue_script(
+                'docly-search', 
+                DOCLY_URL . '/js/DoclySearch.js', 
                 [], 
                 DOCLY_VERSION, 
                 true // Load in footer

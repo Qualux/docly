@@ -10,6 +10,8 @@
     gap: 8px;
     align-items: center;
     justify-content: space-between;
+    max-width: 1180px;
+    margin: 0 auto 60px auto;
 }
 
 :root {
@@ -31,7 +33,7 @@ body {
 }
 
 .doc-header__content {
-    max-width: 1180;
+    max-width: 1180px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -42,7 +44,7 @@ body {
     position: relative;
     display: flex;
     justify-content: space-between;
-    max-width: 1180;
+    max-width: 1180px;
     margin: 0 auto;
     gap: 20px;
 }
@@ -92,6 +94,8 @@ body {
     display: flex;
     gap: 16px;
     flex-direction: column;
+    margin: 0;
+    padding: 0;
 }
 
 .docly-links {
@@ -110,8 +114,11 @@ body {
     min-width: 200px;
     flex-shrink: 0;
     flex-grow: 0;
-    padding: 16px 32px;
+    padding: 16px 24px 16px 24px;
     box-sizing: border-box;
+    background-color: #27262D;
+    overflow-y: auto;
+    max-height: 80vh;
 }
 
 .docly-heading__title {
@@ -125,7 +132,7 @@ body {
     min-width: 180px;
     flex-shrink: 0;
     flex-grow: 0;
-    padding: 16px 32px;
+    padding: 0 32px 16px 32px;
     box-sizing: border-box;
 }
 
@@ -139,6 +146,7 @@ body {
 .doc-content-menu__heading {
     font-size: 0.875rem;
     font-weight: 500;
+    margin: 0;
 }
 
 .doc-content-menu__list {
@@ -156,4 +164,20 @@ body {
 .doc-content-menu__item {
     font-size: 0.875rem;
     font-weight: 500;
+}
+
+.docly-logo__icon {
+    width: 80px;
+    height: auto;
+}
+
+.docly-search {
+    cursor: pointer;
+}
+
+.docly-search__input {
+    border-radius: 8px;
+    padding: 6px;
+    border: none;
+    font-size: 1.25rem;
 }

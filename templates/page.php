@@ -1,10 +1,3 @@
-<?php
-/**
- * Template Name: Documentation Page
- * Description: Docly doc page template.
- */
-?>
-
 <?php 
 
 $nav = new \Docly\DocNav;
@@ -17,9 +10,9 @@ $template = new \Docly\Template;
 <main class="doc-main">
     <?php $nav->render(); ?>
     <div id="doc-content">
-        <div id="doc-content-heading">DOC HEADING</div>
-        <div id="doc-content-title">DOC TITLE</div>
-        <div id="doc-content-body">DOC CONTENT</div>   
+        <div id="doc-content-heading"></div>
+        <div id="doc-content-title"></div>
+        <div id="doc-content-body"></div>   
     </div>
     <div id="doc-content-menu" class="doc-content-menu">
         <div class="doc-content-menu__sticky">
@@ -31,42 +24,14 @@ $template = new \Docly\Template;
 
 <template id="docly-search-modal">
     <div class="docly-modal">
-        <button id="docly-close-modal">Close</button>
-        MODAL
+        <header>
+            <button id="docly-close-modal">Close</button>
+        </header>
+        <div>
+            <input id="docly-search-input" type="text"/>
+        </div>
+        <div class="docly-search-results"></div>
     </div>
 </template>
 
 <?php $template->render_footer(); ?>
-
-<script>
-    class DoclyModal {
-        constructor() {
-            this.searchInput = document.getElementById('docly-search-input');
-            this.modalTemplate = document.getElementById('docly-search-modal').content.cloneNode(true);
-            this.modal = this.modalTemplate.querySelector('.docly-modal');
-            this.closeButton = this.modal.querySelector('#docly-close-modal');
-            
-            this.init();
-        }
-
-        init() {
-            // Handle opening the modal
-            this.searchInput.addEventListener('click', () => this.openModal());
-            // Handle closing the modal
-            this.closeButton.addEventListener('click', () => this.closeModal());
-        }
-
-        openModal() {
-            document.body.appendChild(this.modal);
-        }
-
-        closeModal() {
-            document.body.removeChild(this.modal);
-        }
-    }
-
-    // Initialize the DoclyModal class
-    document.addEventListener('DOMContentLoaded', () => {
-        new DoclyModal();
-    });
-</script>
