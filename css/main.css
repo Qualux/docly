@@ -6,12 +6,18 @@
 }
 
 .docly-header {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    padding: 8px 0;
+    margin-bottom: 24px;
+}
+
+.docly-header__content {
     display: flex;
     gap: 8px;
     align-items: center;
     justify-content: space-between;
     max-width: 1180px;
-    margin: 0 auto 60px auto;
+    margin: 0 auto;
 }
 
 :root {
@@ -144,9 +150,9 @@ body {
 }
 
 .doc-content-menu__heading {
-    font-size: 0.875rem;
+    font-size: 0.925rem;
     font-weight: 500;
-    margin: 0;
+    margin: 0 0 8px 0;
 }
 
 .doc-content-menu__list {
@@ -167,12 +173,21 @@ body {
 }
 
 .docly-logo__icon {
-    width: 80px;
+    width: 60px;
     height: auto;
 }
 
-.docly-search {
+.docly-search-button {
     cursor: pointer;
+    background: rgb(50 50 50);
+    color: rgb( 180 180 180 );
+    border-radius: 8px;
+    padding: 8px 16px;
+    border: none;
+    box-shadow: none;
+    min-width: 320px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .docly-search__input {
@@ -181,9 +196,10 @@ body {
     border: none;
     font-size: 1.25rem;
     background-color: rgb(50 50 50);
+    color: rgb(180 180 180);
     outline: none;
     box-shadow: none;
-    min-width: 320px;
+    min-width: 400px;
 }
 
 
@@ -192,17 +208,12 @@ body {
 .docly-modal {
     position: fixed;
     inset: 0;
+    z-index: 50;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: start;
     background-color: rgb(0 0 0 / 0.9);
-}
-
-.docly-modal__header {
-    margin: 0 0 32px 0;
-    display: flex; 
-    align-items: center;
-    justify-content: end;
+    backdrop-filter: blur(4px);
 }
 
 .docly-modal__content {
@@ -210,6 +221,10 @@ body {
     flex-direction: column;
     gap: 8px;
     width: 420px;
-    height: 50vh;
     overflow-y: auto;
+    margin-top: 20vh;
+}
+
+.docly-button__icon {
+    fill: #C71585;
 }

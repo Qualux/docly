@@ -1,20 +1,20 @@
 class DoclySearch {
+
     constructor() {
-        this.searchButton = document.querySelector('.docly-search');
+        this.searchButton = document.querySelector('.docly-search-button');
         this.modalTemplate = document.getElementById('docly-search-modal').content.cloneNode(true);
         this.modal = this.modalTemplate.querySelector('.docly-modal');
-        this.closeButton = this.modal.querySelector('#docly-close-modal');
 
         this.initialized = false; // Ensure events are initialized only once
 
         this.init();
+
     }
 
     init() {
-        // Handle opening the modal
+
         this.searchButton.addEventListener('click', () => this.openModal());
-        // Handle closing the modal
-        this.closeButton.addEventListener('click', () => this.closeModal());
+
     }
 
     openModal() {
@@ -38,6 +38,11 @@ class DoclySearch {
         this.initialized = true;
 
         this.modal.addEventListener('click', (event) => this.handleClickAway(event));
+
+        document.addEventListener('docly_content_loaded', () => {
+            this.closeModal();
+        });
+
     }
 
     closeModal() {
