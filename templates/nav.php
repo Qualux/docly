@@ -1,5 +1,5 @@
 <?php if (!empty($posts_tree)) : ?>
-    <nav class="docly-navigation">
+    <nav class="docly-nav">
         <ul class="docly-headings">
             <?php foreach ($posts_tree as $heading_post) : ?>
                 <li class="docly-heading">

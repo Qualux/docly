@@ -7,7 +7,7 @@ $template = new \Docly\Template;
 
 <?php $template->render_header(); ?>
 
-<main class="doc-main">
+<main class="docly-main">
     <?php $nav->render(); ?>
     <div id="doc-content">
         <div id="doc-content-heading"></div>

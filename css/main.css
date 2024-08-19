@@ -8,7 +8,8 @@
 .docly-header {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     padding: 8px 0;
-    margin-bottom: 24px;
+    margin-bottom: 0;
+    z-index: 55;
 }
 
 .docly-header__content {
@@ -46,13 +47,22 @@ body {
     justify-content: space-between;
 }
 
-.doc-main {
+.docly-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+}
+
+.docly-main {
     position: relative;
     display: flex;
     justify-content: space-between;
-    max-width: 1180px;
+    width: 1180px;
     margin: 0 auto;
-    gap: 20px;
+    gap: 40px;
+    flex-grow: 1;
 }
 
 .doc-heading {
@@ -83,6 +93,7 @@ body {
 
 #doc-content {
     flex-grow: 1;
+    padding: 32px 0 16px 0;
 }
 
 
@@ -115,16 +126,15 @@ body {
     font-size: 0.9rem;
 }
 
-.docly-navigation {
+.docly-nav {
     flex-basis: 30%;
     min-width: 200px;
     flex-shrink: 0;
     flex-grow: 0;
-    padding: 16px 24px 16px 24px;
+    padding: 32px 24px 16px 24px;
     box-sizing: border-box;
     background-color: #27262D;
     overflow-y: auto;
-    max-height: 80vh;
 }
 
 .docly-heading__title {
@@ -138,7 +148,7 @@ body {
     min-width: 180px;
     flex-shrink: 0;
     flex-grow: 0;
-    padding: 0 32px 16px 32px;
+    padding: 32px 16px 16px 32px;
     box-sizing: border-box;
 }
 
@@ -208,7 +218,7 @@ body {
 .docly-modal {
     position: fixed;
     inset: 0;
-    z-index: 50;
+    z-index: 60;
     display: flex;
     justify-content: center;
     align-items: start;
