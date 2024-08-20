@@ -20,7 +20,10 @@ class DocNav {
      */
     protected function prepare_posts_tree() {
         $posts = $this->doc_post_model->fetch_all();
+
         $post_titles = []; // Array to store post titles
+        $parent_posts = []; // Array to store parent posts
+        $child_posts = []; // Array to store child posts
 
         if (!empty($posts)) {
             // Populate the post_titles array
@@ -28,24 +31,35 @@ class DocNav {
                 $post_titles[$post->ID] = $post->post_title;
             }
 
-            // Organize posts into a tree structure
+            // Separate parent and child posts
             foreach ($posts as $post) {
                 if ($post->post_parent == 0) {
                     // Top-level post
-                    $this->posts_tree[$post->ID] = $post;
-                    $this->posts_tree[$post->ID]->children = [];
+                    $parent_posts[$post->ID] = $post;
+                    $parent_posts[$post->ID]->children = [];
                 } else {
                     // Child post
-                    if (isset($this->posts_tree[$post->post_parent])) {
-                        $child = $post;
-                        // Add the parent title to the child post
-                        $child->parent_title = $post_titles[$post->post_parent];
-                        $this->posts_tree[$post->post_parent]->children[] = $child;
-                    }
+                    $child_posts[] = $post;
+                }
+            }
+
+            // Add parent posts to the tree
+            foreach ($parent_posts as $parent_post) {
+                $this->posts_tree[$parent_post->ID] = $parent_post;
+            }
+
+            // Add child posts to their respective parents
+            foreach ($child_posts as $child_post) {
+                if (isset($this->posts_tree[$child_post->post_parent])) {
+                    $child = $child_post;
+                    // Add the parent title to the child post
+                    $child->parent_title = $post_titles[$child_post->post_parent];
+                    $this->posts_tree[$child_post->post_parent]->children[] = $child;
                 }
             }
         }
     }
+
 
     /**
      * Render the navigation.
@@ -53,6 +67,13 @@ class DocNav {
     public function render() {
         // Pass the tree to the template and render it
         $posts_tree = $this->posts_tree; // Pass the tree to the template
+
+        /*
+        echo '<pre>';
+        var_dump( $posts_tree );
+        echo '<pre>';
+        */
+
         include DOCLY_PATH . 'templates/nav.php';
     }
 }
