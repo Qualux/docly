@@ -17,6 +17,13 @@ class DocController {
                 const docPostId = link.getAttribute('doc-post-id');
                 const docHeading = link.getAttribute('doc-post-parent-title');
 
+                const currentActiveElement = document.querySelector('.docly-link--active');
+                if( currentActiveElement ) {
+                    currentActiveElement.classList.remove('docly-link--active');
+                }
+                
+                link.classList.add('docly-link--active');
+
                 try {
                     // Fetch the post content from the WordPress REST API
                     const response = await fetch(`/wp-json/wp/v2/doc/${docPostId}`);
