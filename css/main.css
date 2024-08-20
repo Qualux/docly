@@ -15,16 +15,14 @@
     justify-content: space-between;
     width: 1180px;
     margin: 0 auto;
-    gap: 40px;
+    gap: 64px;
     flex-grow: 1;
 }
 
 .docly-nav {
-    flex-basis: 30%;
-    flex-basis: 280px;
+    flex-basis: 320px;
     flex-shrink: 0;
     flex-grow: 0;
-    padding: 32px 24px 16px 24px;
     box-sizing: border-box;
     background-color: #27262D;
 }
@@ -34,11 +32,10 @@
     top: 6rem;
     left: 0;
     overflow-y: auto;
+    height: 80vh;
+    padding: 32px 24px 16px 24px;
+    box-sizing: border-box;
 }
-
-
-
-
 
 #doc-content-menu li {
     list-style: none;

@@ -2,14 +2,14 @@
 
 /*
  * Plugin Name: Docly
+ * Author: Qualux LLC.
+ * Author URI: https://qualux.io
+ * Version: 0.0.1
+ * Description: Simple and modern documentation plugin.
  */
 
 namespace Docly;
 
-use Carbon_Fields\Container;
-use Carbon_Fields\Field;
-
-// Define constants
 define('DOCLY_URL', plugin_dir_url(__FILE__));
 define('DOCLY_PATH', plugin_dir_path(__FILE__));
 define('DOCLY_VERSION', '1.0.0');
@@ -22,23 +22,14 @@ class Plugin {
         require_once DOCLY_PATH . 'lib/DocPostType.php';
         require_once DOCLY_PATH . 'lib/DocPostModel.php';
         require_once DOCLY_PATH . 'lib/DocNav.php';
+        require_once DOCLY_PATH . 'lib/Admin.php';
         require_once DOCLY_PATH . 'lib/Template.php';
 
-        add_action( 'after_setup_theme', function() {
-            require_once( DOCLY_PATH . 'vendor/autoload.php' );
-            \Carbon_Fields\Carbon_Fields::boot();
-        });
+        // Instantiate the admin class.
+        new \Docly\Admin();
 
-        add_action( 'carbon_fields_register_fields', function() {
-            Container::make( 'theme_options', __( 'Docly', 'crb' ) )
-                ->add_fields( array(
-                    Field::make( 'text', 'crb_text', 'Text Field' ),
-                )
-            );
-        });
-
-        // Instantiate the DocPostType class
-        new \App\PostTypes\DocPostType();
+        // Instantiate the doc post type.
+        new \Docly\DocPostType();
 
         // Enqueue DocController JS.
         add_action('wp_enqueue_scripts', function() {
