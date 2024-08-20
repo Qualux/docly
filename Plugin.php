@@ -44,7 +44,7 @@ class Plugin {
 
             wp_enqueue_script(
                 'docly-doc-content-menu-generator', 
-                DOCLY_URL . '/js/ContentMenuGenerator.js', 
+                DOCLY_URL . '/js/TableContentsGenerator.js', 
                 [], 
                 DOCLY_VERSION, 
                 true // Load in footer

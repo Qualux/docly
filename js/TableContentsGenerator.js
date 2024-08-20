@@ -1,4 +1,4 @@
-class ContentMenuGenerator {
+class TableContentsGenerator {
     constructor() {
         this.initialize();
     }
@@ -6,8 +6,22 @@ class ContentMenuGenerator {
     initialize() {
         const contentBody = document.querySelector('#doc-content-body');
         if (contentBody) {
+
             const headingsTree = this.parseHeadings(contentBody);
-            this.renderContextMenu(headingsTree);
+
+            const tocEl = document.querySelector('.doc-content-menu__sticky');
+
+            if( headingsTree.length > 0 ) {
+                this.renderContextMenu(headingsTree);
+                if( tocEl ) {
+                    tocEl.style.display = 'block';
+                }
+            } else {
+                if( tocEl ) {
+                    tocEl.style.display = 'none';
+                } 
+            }
+            
         }
     }
 
@@ -80,5 +94,5 @@ class ContentMenuGenerator {
 
 // Initialize the DocMenuGenerator when the content is loaded
 document.addEventListener('docly_content_loaded', () => {
-    new ContentMenuGenerator();
+    new TableContentsGenerator();
 });
