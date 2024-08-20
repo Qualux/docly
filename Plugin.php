@@ -66,8 +66,6 @@ class Plugin {
                 'all'
             );
 
-            
-
         });
 
         // Register the page template
@@ -75,6 +73,10 @@ class Plugin {
 
         // Load the correct template
         add_filter('template_include', [$this, 'template']);
+
+        // Render the styles from settings.
+        $this->styles();
+
     }
 
     public function register_page_template($templates) {
@@ -101,6 +103,29 @@ class Plugin {
         }
 
         return $template;
+
+    }
+
+    public function styles() {
+
+        add_action('wp_head', function() {
+
+             $color_accent = carbon_get_theme_option( 'docly_color_accent' );
+             if( ! $color_accent ) {
+                $color_accent = '#0C8CE9';
+             } else {
+                $color_accent = '#'.$color_accent;
+             }
+
+            echo "
+                <style>
+                    .page-template-doc_page {
+                        --docly-color-accent: {$color_accent};
+                    }
+                </style>
+            ";
+
+        });
 
     }
     

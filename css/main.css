@@ -1,10 +1,6 @@
 /* Layout */
 
 .docly-page {
-    --color-accent: #0C8CE9;
-}
-
-.docly-page {
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -253,7 +249,7 @@ body {
 }
 
 .docly-button__icon {
-    fill: var(--color-accent);
+    fill: var(--docly-color-accent);
 }
 
 /* Admin bar handling */
