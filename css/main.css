@@ -1,3 +1,45 @@
+/* Layout */
+
+.docly-page {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+}
+
+.docly-main {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 1180px;
+    margin: 0 auto;
+    gap: 40px;
+    flex-grow: 1;
+}
+
+.docly-nav {
+    flex-basis: 30%;
+    flex-basis: 280px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    padding: 32px 24px 16px 24px;
+    box-sizing: border-box;
+    background-color: #27262D;
+}
+
+.docly-nav__sticky {
+    position: sticky;
+    top: 6rem;
+    left: 0;
+    overflow-y: auto;
+}
+
+
+
+
+
 #doc-content-menu li {
     list-style: none;
     font-size: 0.875rem;
@@ -6,10 +48,15 @@
 }
 
 .docly-header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     padding: 8px 0;
     margin-bottom: 0;
     z-index: 55;
+    background-color: #121212;
 }
 
 .docly-header__content {
@@ -47,23 +94,9 @@ body {
     justify-content: space-between;
 }
 
-.docly-page {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: stretch;
-    align-items: stretch;
-}
 
-.docly-main {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    width: 1180px;
-    margin: 0 auto;
-    gap: 40px;
-    flex-grow: 1;
-}
+
+
 
 .doc-heading {
     font-size: 1rem;
@@ -126,16 +159,7 @@ body {
     font-size: 0.9rem;
 }
 
-.docly-nav {
-    flex-basis: 30%;
-    min-width: 200px;
-    flex-shrink: 0;
-    flex-grow: 0;
-    padding: 32px 24px 16px 24px;
-    box-sizing: border-box;
-    background-color: #27262D;
-    overflow-y: auto;
-}
+
 
 .docly-heading__title {
     font-size: 0.9rem;
@@ -237,4 +261,22 @@ body {
 
 .docly-button__icon {
     fill: #C71585;
+}
+
+/* Admin bar handling */
+
+body.admin-bar .docly-header {
+    top: var(--wp-admin--admin-bar--height);
+}
+
+body.admin-bar .docly-page {
+    height: calc(100vh - var(--wp-admin--admin-bar--height));
+}
+
+body.admin-bar .docly-nav__sticky {
+    top: calc(5rem + var(--wp-admin--admin-bar--height));
+}
+
+body.admin-bar .doc-content-menu__sticky {
+    top: calc(5rem + var(--wp-admin--admin-bar--height));
 }
