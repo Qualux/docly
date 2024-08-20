@@ -1,7 +1,6 @@
 /* Layout */
 
 .docly-page {
-    position: relative;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -10,13 +9,12 @@
 }
 
 .docly-main {
-    position: relative;
     display: flex;
     justify-content: space-between;
+    align-items: start;
     width: 1180px;
     margin: 0 auto;
     gap: 64px;
-    flex-grow: 1;
 }
 
 .docly-nav {
@@ -25,19 +23,19 @@
     flex-grow: 0;
     box-sizing: border-box;
     background-color: #27262D;
-}
-
-.docly-nav__sticky {
     position: sticky;
-    top: 6rem;
+    top: 0;
     left: 0;
     overflow-y: auto;
-    height: 80vh;
     padding: 32px 24px 16px 24px;
     box-sizing: border-box;
 }
 
-#doc-content-menu li {
+.docly-nav__sticky {
+    
+}
+
+#doc-toc li {
     list-style: none;
     font-size: 0.875rem;
     font-weight: 500;
@@ -164,16 +162,13 @@ body {
     font-weight: 600;
 }
 
-.doc-content-menu {
+.doc-toc {
     flex-basis: 20%;
     min-width: 180px;
     flex-shrink: 0;
     flex-grow: 0;
     padding: 32px 0 16px 0;
     box-sizing: border-box;
-}
-
-.doc-content-menu__sticky {
     display: none; /* Will be switch to block by TOC generator script if TOC items available. */
     overflow-y: auto;
     position: sticky;
@@ -181,13 +176,13 @@ body {
     top: 5rem;
 }
 
-.doc-content-menu__heading {
+.doc-toc__heading {
     font-size: 0.925rem;
     font-weight: 500;
     margin: 0 0 8px 0;
 }
 
-.doc-content-menu__list {
+.doc-toc__list {
     padding: 8px 0;
     margin: 0;
     display: flex;
@@ -195,11 +190,11 @@ body {
     gap: 8px;
 }
 
-.doc-content-menu__item .doc-content-menu__list {
+.doc-toc__item .doc-toc__list {
     margin-left: 16px;
 }
 
-.doc-content-menu__item {
+.doc-toc__item {
     font-size: 0.875rem;
     font-weight: 500;
 }
@@ -275,6 +270,30 @@ body.admin-bar .docly-nav__sticky {
     top: calc(5rem + var(--wp-admin--admin-bar--height));
 }
 
-body.admin-bar .doc-content-menu__sticky {
+body.admin-bar .doc-toc__sticky {
     top: calc(5rem + var(--wp-admin--admin-bar--height));
+}
+
+/*
+ * Scrollbars.
+ */
+
+/* For WebKit browsers (Chrome, Safari, Edge) */
+.docly-main ::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+.docly-main ::-webkit-scrollbar-track {
+    background: #C6C6C8; /* Track color */
+    border-radius: 8px; /* Rounded corners */
+}
+
+.docly-main ::-webkit-scrollbar-thumb {
+    background-color: #1C1B22; /* Thumb color */
+    border-radius: 8px; /* Rounded corners */
+    border: solid 2px white; /* Space around the thumb */
+}
+
+.docly-main ::-webkit-scrollbar-thumb:hover {
+    background-color: #C71585; /* Thumb color on hover */
 }

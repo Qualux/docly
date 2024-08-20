@@ -9,7 +9,7 @@ class TableContentsGenerator {
 
             const headingsTree = this.parseHeadings(contentBody);
 
-            const tocEl = document.querySelector('.doc-content-menu__sticky');
+            const tocEl = document.querySelector('.doc-toc');
 
             if( headingsTree.length > 0 ) {
                 this.renderContextMenu(headingsTree);
@@ -61,17 +61,17 @@ class TableContentsGenerator {
 
     // Render the tree structure into a context menu
     renderContextMenu(tree) {
-        const contextMenu = document.querySelector('.doc-content-menu__body');
+        const contextMenu = document.querySelector('.doc-toc__body');
         contextMenu.innerHTML = ''; // Clear existing content
 
         const createMenuItem = (node) => {
             const listItem = document.createElement('li');
             listItem.textContent = node.text;
-            listItem.classList.add('doc-content-menu__item');
+            listItem.classList.add('doc-toc__item');
 
             if (node.children.length > 0) {
                 const subMenu = document.createElement('ul');
-                subMenu.classList.add('doc-content-menu__list');
+                subMenu.classList.add('doc-toc__list');
                 node.children.forEach(childNode => {
                     subMenu.appendChild(createMenuItem(childNode));
                 });

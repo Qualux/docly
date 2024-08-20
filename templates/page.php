@@ -14,11 +14,9 @@ $template = new \Docly\Template;
         <div id="doc-content-title"></div>
         <div id="doc-content-body"></div>   
     </div>
-    <div id="doc-content-menu" class="doc-content-menu">
-        <div class="doc-content-menu__sticky">
-            <h2 class="doc-content-menu__heading">On this page</h2>
-            <ul class="doc-content-menu__body doc-content-menu__list"></ul>
-        </div>
+    <div id="doc-toc" class="doc-toc">
+        <h2 class="doc-toc__heading">On this page</h2>
+        <ul class="doc-toc__body doc-toc__list"></ul>
     </div>
 </main>
 

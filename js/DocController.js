@@ -1,6 +1,8 @@
 class DocController {
+
     constructor() {
         this.initialize();
+        this.heightSetter();
     }
 
     initialize() {
@@ -48,6 +50,36 @@ class DocController {
             });
         });
     }
+
+    heightSetter() {
+
+        const headerElement = document.querySelector('.docly-header');
+        const navElement = document.querySelector('.docly-nav');
+        const tocElement = document.querySelector('.doc-toc');
+        const headerHeight = headerElement.clientHeight;
+        const viewportHeight = window.innerHeight;
+        const navHeight = viewportHeight - headerHeight - this.getAdminBarHeight();
+        const navStickyTop = headerHeight + 32;
+    
+        if (headerElement && navElement) {
+            navElement.style.height = `${navHeight}px`;
+            navElement.style.top = `${navStickyTop}px`;
+        }
+
+        if (headerElement && tocElement) {
+            tocElement.style.height = `${navHeight}px`;
+            tocElement.style.top = `${navStickyTop}px`;
+        }
+        
+
+    }
+
+    getAdminBarHeight() {
+        const rootStyles = getComputedStyle(document.documentElement);
+        const adminBarHeight = rootStyles.getPropertyValue('--wp-admin--admin-bar--height').trim();
+        return parseFloat(adminBarHeight) || 0; // Return 0 if the value is not a valid number
+    }
+
 }
 
 // Instantiate the controller when the DOM is fully loaded

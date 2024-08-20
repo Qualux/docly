@@ -1,6 +1,5 @@
 <?php if (!empty($posts_tree)) : ?>
     <div class="docly-nav">
-        <nav class="docly-nav__sticky">
             <ul class="docly-headings">
                 <?php foreach ($posts_tree as $heading_post) : ?>
                     <li class="docly-heading">
@@ -24,6 +23,5 @@
                     </li>
                 <?php endforeach; ?>
             </ul>
-        </nav>
     </div>
 <?php endif; ?>
