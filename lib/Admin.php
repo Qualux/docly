@@ -23,6 +23,7 @@ class Admin {
                     Field::make('color', 'docly_color_primary', __('Primary Color'))->set_default_value('#FFFFFF'),
                     Field::make('color', 'docly_color_accent', __('Accent Color'))->set_default_value('#0C8CE9'),
                     Field::make('color', 'docly_color_offset', __('Offset Color'))->set_default_value('#737373'),
+                    Field::make('color', 'docly_color_text', __('Text Color'))->set_default_value('#242424'),
                 ));
         }); 
 

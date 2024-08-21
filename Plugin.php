@@ -125,12 +125,18 @@ class Plugin {
                 $color_offset = '#737373';
              }
 
+             $color_text = carbon_get_theme_option( 'docly_color_text' );
+             if( ! $color_text ) {
+                $color_text = '#242424';
+             }
+             
             echo "
                 <style>
                     .page-template-doc_page {
                         --docly-color-primary: {$color_primary};
                         --docly-color-accent: {$color_accent};
                         --docly-color-offset: {$color_offset};
+                        --docly-color-text: {$color_text};
                     }
                 </style>
             ";

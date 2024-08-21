@@ -10,6 +10,7 @@
 
 .docly-main {
     background-color: var(--docly-color-primary);
+    color: var(--docly-color-text);
 }
 
 .docly-main__content {
@@ -51,6 +52,7 @@
     padding: 8px 0;
     margin-bottom: 0;
     z-index: 55;
+    color: var(--docly-color-text);
 }
 
 .docly-header__content {
@@ -210,8 +212,8 @@ body {
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
-    background: var(--docly-color-offset);
-    color: white;
+    background: var(--docly-color-primary);
+    color: var(--docly-color-offset);
     border-radius: 8px;
     padding: 8px 16px 8px 8px;
     box-shadow: none;
