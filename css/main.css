@@ -9,12 +9,16 @@
 }
 
 .docly-main {
+    background-color: var(--docly-color-primary);
+}
+
+.docly-main__content {
     display: flex;
     justify-content: space-between;
     align-items: start;
+    gap: 64px;
     width: 1180px;
     margin: 0 auto;
-    gap: 64px;
 }
 
 .docly-nav {
@@ -42,7 +46,8 @@
     top: 0;
     left: 0;
     right: 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    background-color: var(--docly-color-primary);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
     padding: 8px 0;
     margin-bottom: 0;
     z-index: 55;
@@ -296,13 +301,8 @@ body {
 }
 
 /* Admin bar handling */
-
 body.admin-bar .docly-header {
     top: var(--wp-admin--admin-bar--height);
-}
-
-body.admin-bar .docly-page {
-    height: calc(100vh - var(--wp-admin--admin-bar--height));
 }
 
 body.admin-bar .docly-nav {
@@ -323,7 +323,7 @@ body.admin-bar .doc-toc {
 }
 
 .docly-main ::-webkit-scrollbar-track {
-    background: #C6C6C8; /* Track color */
+    background: var(--docly-color-primary); /* Track color */
     border-radius: 8px; /* Rounded corners */
 }
 

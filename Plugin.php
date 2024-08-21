@@ -110,6 +110,11 @@ class Plugin {
 
         add_action('wp_head', function() {
 
+            $color_primary = carbon_get_theme_option( 'docly_color_primary' );
+             if( ! $color_primary ) {
+                $color_primary = '#FFFFFF';
+             }
+
              $color_accent = carbon_get_theme_option( 'docly_color_accent' );
              if( ! $color_accent ) {
                 $color_accent = '#0C8CE9';
@@ -123,6 +128,7 @@ class Plugin {
             echo "
                 <style>
                     .page-template-doc_page {
+                        --docly-color-primary: {$color_primary};
                         --docly-color-accent: {$color_accent};
                         --docly-color-offset: {$color_offset};
                     }
