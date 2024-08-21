@@ -6,58 +6,81 @@ class DocController {
     }
 
     initialize() {
-        // Select all <a> elements within .docly-link
+
         const docLinks = document.querySelectorAll('.docly-link a');
-
-        // Add a click event listener to each link
+    
         docLinks.forEach(link => {
-            link.addEventListener('click', async (event) => {
-                event.preventDefault(); // Prevent default navigation
 
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+    
                 const docPostId = link.getAttribute('doc-post-id');
                 const docHeading = link.getAttribute('doc-post-parent-title');
-
-                const currentActiveElement = document.querySelector('.docly-link--active');
-                if( currentActiveElement ) {
-                    currentActiveElement.classList.remove('docly-link--active');
-                }
                 
-                link.classList.add('docly-link--active');
-
-                try {
-                    // Fetch the post content from the WordPress REST API
-                    const response = await fetch(`/wp-json/wp/v2/doc/${docPostId}`);
-                    const data = await response.json();
-
-                    if (response.ok) {
-                        // Render the post content into the .doc-content__body element
-                        const docContentBody = document.querySelector('#doc-content-body');
-                        const docContentHeadingElement = document.querySelector('#doc-content-heading');
-                        const docContentTitleElement = document.querySelector('#doc-content-title');
-
-                        docContentBody.innerHTML = data.content.rendered;
-                        docContentHeadingElement.innerHTML = docHeading;
-                        docContentTitleElement.innerHTML = data.title.rendered;
-
-                        // Fire the custom event after the content is added
-                        const event = new CustomEvent('docly_content_loaded', {
-                            detail: {
-                                postId: docPostId,
-                                heading: docHeading
-                            }
-                        });
-                        document.dispatchEvent(event);
-
-                    } else {
-                        console.error('Error fetching post:', data);
-                    }
-                } catch (error) {
-                    console.error('Fetch error:', error);
-                }
+                this.navSetActiveClass(link);
+                this.loadContent(docPostId, docHeading);
+                
             });
+
         });
+
+        this.loadFirst();
+
     }
 
+    loadFirst() {
+
+        const link = document.querySelector('.docly-link a');
+        const docPostId = link.getAttribute('doc-post-id');
+        const docHeading = link.getAttribute('doc-post-parent-title');
+        this.navSetActiveClass(link);
+        this.loadContent(docPostId, docHeading);
+
+    }
+
+    navSetActiveClass( linkEl ) {
+
+        const currentActiveElement = document.querySelector('.docly-link--active');
+        if (currentActiveElement) {
+            currentActiveElement.classList.remove('docly-link--active');
+        }
+        linkEl.classList.add('docly-link--active');
+
+    }
+    
+    async loadContent(docPostId, docHeading) {
+
+        try {
+            const response = await fetch(`/wp-json/wp/v2/doc/${docPostId}`);
+            const data = await response.json();
+    
+            if (response.ok) {
+    
+                const docContentBody = document.querySelector('#doc-content-body');
+                const docContentHeadingElement = document.querySelector('#doc-content-heading');
+                const docContentTitleElement = document.querySelector('#doc-content-title');
+    
+                docContentBody.innerHTML = data.content.rendered;
+                docContentHeadingElement.innerHTML = docHeading;
+                docContentTitleElement.innerHTML = data.title.rendered;
+    
+                const event = new CustomEvent('docly_content_loaded', {
+                    detail: {
+                        postId: docPostId,
+                        heading: docHeading
+                    }
+                });
+                document.dispatchEvent(event);
+    
+            } else {
+                console.error('Error fetching post:', data);
+            }
+        } catch (error) {
+            console.error('Fetch error:', error);
+        }
+
+    }
+    
     heightSetter() {
 
         const headerElement = document.querySelector('.docly-header');

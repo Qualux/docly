@@ -22,7 +22,6 @@
     flex-shrink: 0;
     flex-grow: 0;
     box-sizing: border-box;
-    background-color: #27262D;
     position: sticky;
     top: 0;
     left: 0;
@@ -47,7 +46,6 @@
     padding: 8px 0;
     margin-bottom: 0;
     z-index: 55;
-    background-color: #121212;
 }
 
 .docly-header__content {
@@ -87,7 +85,6 @@ body {
 
 .doc-heading {
     font-size: 1rem;
-    color: rgb(120 120 120);
 }
 
 .doc-nav {
@@ -106,8 +103,8 @@ body {
     padding: 0 0 0 20px;
 }
 
-.doc-link {
-    cursor: pointer;
+.docly-link:hover {
+    color: var(--docly-color-accent);
 }
 
 .docly-link--active {
@@ -132,7 +129,7 @@ body {
 
 .docly-headings {
     display: flex;
-    gap: 16px;
+    gap: 24px;
     flex-direction: column;
     margin: 0;
     padding: 0;
@@ -140,12 +137,17 @@ body {
 
 .docly-links {
     display: flex;
-    gap: 8px;
+    gap: 16px;
     flex-direction: column;
-    padding: 8px 0 8px 32px;
+    padding: 16px 0 16px 32px;
+}
+
+.docly-link {
+    transition: color 400ms;
 }
 
 .docly-link__a {
+    display: block;
     font-size: 0.9rem;
 }
 
@@ -153,8 +155,7 @@ body {
 
 .docly-heading__title {
     font-size: 0.9rem;
-    color: rgb(220 220 200);
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .doc-toc {
@@ -204,16 +205,20 @@ body {
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
-    background: rgb(50 50 50);
-    color: rgb( 180 180 180 );
+    background: var(--docly-color-offset);
+    color: white;
     border-radius: 8px;
     padding: 8px 16px 8px 8px;
-    border: none;
     box-shadow: none;
     min-width: 320px;
     display: flex;
     justify-content: space-between;
-    border: solid 1px var(--docly-color-accent);
+    border: solid 1px var(--docly-color-offset);
+    transition: border-color 400ms;
+}
+
+.docly-search-button:hover {
+    border-color: var(--docly-color-accent);
 }
 
 .docly-search-button__left {
@@ -242,18 +247,29 @@ body {
 
 .docly-search__input {
     border-radius: 8px;
-    padding: 16px 24px;
+    padding: 16px 24px 16px 40px;
     border: none;
     font-size: 1.25rem;
-    background-color: rgb(50 50 50);
-    color: rgb(180 180 180);
+    background-color: white;
+    color: var(--docly-color-offset);
     outline: none;
-    box-shadow: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     min-width: 400px;
+    line-height: 1rem;
 }
 
+.docly-search {
+    position: relative;
+}
 
-
+.docly-search__icon {
+    position: absolute;
+    top: calc(50% - 12px);
+    left: 8px;
+    width: 24px;
+    height: auto;
+    fill: var(--docly-color-accent);
+}
 
 .docly-modal {
     position: fixed;
@@ -262,7 +278,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: start;
-    background-color: rgb(0 0 0 / 0.9);
+    background-color: rgb(0 0 0 / 0.25);
     backdrop-filter: blur(4px);
 }
 
@@ -289,11 +305,11 @@ body.admin-bar .docly-page {
     height: calc(100vh - var(--wp-admin--admin-bar--height));
 }
 
-body.admin-bar .docly-nav__sticky {
+body.admin-bar .docly-nav {
     top: calc(5rem + var(--wp-admin--admin-bar--height));
 }
 
-body.admin-bar .doc-toc__sticky {
+body.admin-bar .doc-toc {
     top: calc(5rem + var(--wp-admin--admin-bar--height));
 }
 
@@ -312,11 +328,11 @@ body.admin-bar .doc-toc__sticky {
 }
 
 .docly-main ::-webkit-scrollbar-thumb {
-    background-color: #1C1B22; /* Thumb color */
-    border-radius: 8px; /* Rounded corners */
-    border: solid 2px white; /* Space around the thumb */
+    background-color: var(--docly-color-offset);
+    border-radius: 8px;
+    border: solid 2px white;
 }
 
 .docly-main ::-webkit-scrollbar-thumb:hover {
-    background-color: #C71585; /* Thumb color on hover */
+    background-color: var(--docly-color-accent);
 }

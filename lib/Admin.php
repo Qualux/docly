@@ -20,7 +20,8 @@ class Admin {
                     Field::make( 'checkbox', 'docly_github_button', 'Render GitHub Button' )->set_default_value( true ),
                     Field::make( 'text', 'docly_github_url', 'GitHub URL' ),
                     Field::make( 'image', 'docly_logo', 'Logo Upload' ),
-                    Field::make('color', 'docly_color_accent', __('Accent Color'))->set_default_value('0C8CE9'),
+                    Field::make('color', 'docly_color_accent', __('Accent Color'))->set_default_value('#0C8CE9'),
+                    Field::make('color', 'docly_color_offset', __('Offset Color'))->set_default_value('#737373'),
                 ));
         }); 
 

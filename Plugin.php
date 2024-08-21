@@ -113,14 +113,18 @@ class Plugin {
              $color_accent = carbon_get_theme_option( 'docly_color_accent' );
              if( ! $color_accent ) {
                 $color_accent = '#0C8CE9';
-             } else {
-                $color_accent = '#'.$color_accent;
+             }
+
+             $color_offset = carbon_get_theme_option( 'docly_color_offset' );
+             if( ! $color_offset ) {
+                $color_offset = '#737373';
              }
 
             echo "
                 <style>
                     .page-template-doc_page {
                         --docly-color-accent: {$color_accent};
+                        --docly-color-offset: {$color_offset};
                     }
                 </style>
             ";
