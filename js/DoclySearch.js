@@ -1,5 +1,7 @@
 class DoclySearch {
 
+    searchActive = false;
+
     constructor() {
         this.searchButton = document.querySelector('.docly-search-button');
         this.modalTemplate = document.getElementById('docly-search-modal').content.cloneNode(true);
@@ -14,7 +16,32 @@ class DoclySearch {
     init() {
 
         this.searchButton.addEventListener('click', () => this.openModal());
+        this.handleKeyPress();
 
+    }
+
+    handleKeyPress( event ) {
+
+        
+
+        document.addEventListener('keydown', (e) => {
+
+            console.log('k press...')
+
+            if (e.ctrlKey && e.key.toLowerCase() === 'k') {
+                e.preventDefault();
+
+                if( this.searchActive ) {
+                    this.closeModal();
+                } else {
+                    this.openModal();
+                }
+
+            }
+
+        });
+
+        
     }
 
     openModal() {
@@ -28,6 +55,13 @@ class DoclySearch {
         if (!this.initialized) {
             this.initEvents();
         }
+
+        // Set active.
+        this.searchActive = true;
+
+        // Focus the search input.
+        this.focusSearchInput();
+
     }
 
     initEvents() {
@@ -48,6 +82,14 @@ class DoclySearch {
     closeModal() {
         document.body.removeChild(this.modal);
         this.clearSearchInput();
+        this.searchActive = false;
+    }
+
+    focusSearchInput() {
+        const searchInput = document.querySelector('#docly-search-input');
+        if (searchInput) {
+            searchInput.focus();
+        }
     }
 
     async performSearch(query) {

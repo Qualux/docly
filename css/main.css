@@ -85,10 +85,6 @@ body {
     justify-content: space-between;
 }
 
-
-
-
-
 .doc-heading {
     font-size: 1rem;
     color: rgb(120 120 120);
@@ -106,7 +102,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    border-left: solid 1px rgb(180 180 180);
     margin: 0 0 0 0;
     padding: 0 0 0 20px;
 }
@@ -127,7 +122,7 @@ body {
 
 
 #doc-content-heading {
-    color: #C71585;
+    color: var(--docly-color-accent);
 }
 
 #doc-content-title {
@@ -205,6 +200,7 @@ body {
 }
 
 .docly-search-button {
+    position: relative;
     cursor: pointer;
     background: rgb(50 50 50);
     color: rgb( 180 180 180 );
@@ -216,6 +212,13 @@ body {
     display: flex;
     justify-content: space-between;
     border: solid 1px var(--docly-color-accent);
+}
+
+.docly-search-button__key {
+    position: absolute;
+    right: 8px;
+    top: 10px;
+    font-size: 0.875rem;
 }
 
 .docly-search__input {

@@ -51,6 +51,9 @@ $github_url = carbon_get_theme_option( 'docly_github_url' );
                 <span>
                     Search docs...
                 </span>
+                <span class="docly-search-button__key">
+                    Ctrl K
+                </span>
             </button>
             <?php if( $docly_github_button ) { ?>
                 <div class="docly-buttons">
