@@ -74,6 +74,7 @@ class DoclySearch {
         this.modal.addEventListener('click', (event) => this.handleClickAway(event));
 
         document.addEventListener('docly_content_loaded', () => {
+            console.log('content loaded before close modal...')
             this.closeModal();
         });
 
@@ -82,6 +83,7 @@ class DoclySearch {
     closeModal() {
         document.body.removeChild(this.modal);
         this.clearSearchInput();
+        this.clearSearchResults();
         this.searchActive = false;
     }
 
@@ -108,7 +110,8 @@ class DoclySearch {
     }
 
     displayResults(results) {
-        this.resultsContainer.innerHTML = '';
+       
+        this.clearSearchResults();
 
         if (results.length === 0) {
             this.resultsContainer.innerHTML = '<p>No results found.</p>';
@@ -126,14 +129,23 @@ class DoclySearch {
 
         this.resultsContainer.appendChild(list);
 
-        // Re-init links to fetch doc posts. 
-        const docController = new DocController();
+        // Init links to fetch doc posts. 
+        const docLinks = this.resultsContainer.querySelectorAll('.docly-link');
+        docLinks.forEach(link => {
+            window.docly.controller.addLinkClickEvent(link);
+        });
 
     }
 
     clearSearchInput() {
         if (this.searchInput) {
             this.searchInput.value = '';
+        }
+    }
+
+    clearSearchResults() {
+        if (this.resultsContainer) {
+            this.resultsContainer.innerHTML = '';
         }
     }
 

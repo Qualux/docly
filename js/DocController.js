@@ -1,5 +1,6 @@
 class DocController {
 
+    currentDocPostId  = 0;
     isMobileViewport  = false;
     responsiveNavOpen = false;
 
@@ -12,21 +13,10 @@ class DocController {
 
     initialize() {
 
-        const docLinks = document.querySelectorAll('.docly-link a');
+        const docLinks = document.querySelectorAll('.docly-link');
     
         docLinks.forEach(link => {
-
-            link.addEventListener('click', (event) => {
-                event.preventDefault();
-    
-                const docPostId = link.getAttribute('doc-post-id');
-                const docHeading = link.getAttribute('doc-post-parent-title');
-                
-                this.navSetActiveClass(link);
-                this.loadContent(docPostId, docHeading);
-                
-            });
-
+            this.addLinkClickEvent(link);
         });
 
         this.loadFirst();
@@ -40,9 +30,24 @@ class DocController {
 
     }
 
+    addLinkClickEvent(link) {
+
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+
+            const docPostId = link.getAttribute('doc-post-id');
+            const docHeading = link.getAttribute('doc-post-parent-title');
+            
+            this.navSetActiveClass(link);
+            this.loadContent(docPostId, docHeading);
+            
+        });
+
+    }
+
     loadFirst() {
 
-        const link = document.querySelector('.docly-link a');
+        const link = document.querySelector('.docly-link');
         const docPostId = link.getAttribute('doc-post-id');
         const docHeading = link.getAttribute('doc-post-parent-title');
         this.navSetActiveClass(link);
@@ -94,15 +99,13 @@ class DocController {
         }
     }
 
-    navSetActiveClass( linkEl ) {
-
+    navSetActiveClass(linkEl) {
         const currentActiveElement = document.querySelector('.docly-link--active');
         if (currentActiveElement) {
             currentActiveElement.classList.remove('docly-link--active');
         }
         linkEl.classList.add('docly-link--active');
-
-    }
+    }    
     
     async loadContent(docPostId, docHeading) {
 
@@ -127,6 +130,9 @@ class DocController {
                     }
                 });
                 document.dispatchEvent(event);
+
+                // Update current doc post ID.
+                this.currentDocPostId = docPostId;
     
             } else {
                 console.error('Error fetching post:', data);
@@ -175,5 +181,7 @@ class DocController {
 
 // Instantiate the controller when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new DocController();
+    window.docly = {
+        controller: new DocController()
+    };
 });
