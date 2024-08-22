@@ -23,6 +23,7 @@ $github_url = carbon_get_theme_option( 'docly_github_url' );
 
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <?php wp_head(); ?>
     </head>
     <body <?php body_class(); ?>>
@@ -47,19 +48,24 @@ $github_url = carbon_get_theme_option( 'docly_github_url' );
                     </svg>
                 <?php } ?>
             </div>
-            <button class="docly-search-button">
-                <div class="docly-search-button__left">
-                    <span class="docly-search-button__icon">
-                        <svg class="docly-search-button__icon-svg" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path></svg>
-                    </span>
-                    <span class="docly-search-button__text">
-                        Search docs...
-                    </span>
+            <div class="docly-header__center">
+                <div class="docly-responsive-nav-button">
+                    <svg class="docly-responsive-nav-button__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><line x1="40" y1="128" x2="216" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="40" y1="64" x2="216" y2="64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="40" y1="192" x2="216" y2="192" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
                 </div>
-                <span class="docly-search-button__key">
-                    Ctrl K
-                </span>
-            </button>
+                <button class="docly-search-button">
+                    <div class="docly-search-button__left">
+                        <span class="docly-search-button__icon">
+                            <svg class="docly-search-button__icon-svg" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path></svg>
+                        </span>
+                        <span class="docly-search-button__text">
+                            Search docs...
+                        </span>
+                    </div>
+                    <span class="docly-search-button__key">
+                        Ctrl K
+                    </span>
+                </button>
+            </div>
             <?php if( $docly_github_button ) { ?>
                 <div class="docly-buttons">
                     <?php if( $github_url ) { ?>

@@ -1,13 +1,5 @@
 /* Layout */
 
-.docly-page {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: stretch;
-    align-items: stretch;
-}
-
 .docly-main {
     background-color: var(--docly-color-primary);
     color: var(--docly-color-text);
@@ -35,18 +27,10 @@
     box-sizing: border-box;
 }
 
-#doc-toc li {
-    list-style: none;
-    font-size: 0.875rem;
-    font-weight: 500;
-    cursor: pointer;
-}
-
 .docly-header {
     position: sticky;
     top: 0;
-    left: 0;
-    right: 0;
+    width: 100%;
     background-color: var(--docly-color-primary);
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
     padding: 8px 0;
@@ -165,6 +149,8 @@ body {
     font-weight: 500;
 }
 
+/* Table of contents. */
+
 .doc-toc {
     flex-basis: 20%;
     min-width: 180px;
@@ -177,6 +163,13 @@ body {
     position: sticky;
     right: 0;
     top: 5rem;
+}
+
+.doc-toc li {
+    list-style: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
 }
 
 .doc-toc__heading {
@@ -337,4 +330,87 @@ body.admin-bar .doc-toc {
 
 .docly-main ::-webkit-scrollbar-thumb:hover {
     background-color: var(--docly-color-accent);
+}
+
+.docly-header__center {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.docly-responsive-nav-button {
+    display: none;
+}
+
+.docly-responsive-nav-button__icon {
+    width: 32px;
+    height: auto;
+}
+
+
+/* Responsive */
+
+@media (max-width: 1400px) {
+
+    body {
+        background-color: red;
+    }
+
+    .docly-main__content {
+        width: 100%;
+        flex-direction: column;
+        overflow: hidden;
+        padding-left: 8px;
+        padding-right: 8px;
+        box-sizing: border-box;
+    }
+
+    .doc-toc {
+        display: none;
+    }
+
+    .docly-nav {
+        flex-basis: 100%;
+        display: none;
+        position: fixed;
+        inset: 0;
+        background-color: var(--docly-color-primary);
+    }
+
+    .docly-search-button {
+        min-width: auto;
+        border: none;
+    }
+
+    .docly-search-button__key,
+    .docly-search-button__text {
+        display: none;
+    }
+
+    .docly-header {
+        padding-left: 8px;
+        padding-right: 8px;
+        box-sizing: border-box;
+    }
+
+    .docly-responsive-nav-button {
+        display: block;
+    }
+
+    .docly-search {
+        width: 100%;
+        padding-left: 8px;
+        padding-right: 8px;
+        box-sizing: border-box;
+    }
+
+    .docly-search__icon {
+        left: 16px;
+    }
+
+    .docly-search__input {
+        width: 100%;
+        min-width: auto;
+    }
+
 }

@@ -1,8 +1,13 @@
 class DocController {
 
+    isMobileViewport  = false;
+    responsiveNavOpen = false;
+
     constructor() {
+
         this.initialize();
         this.heightSetter();
+
     }
 
     initialize() {
@@ -26,6 +31,13 @@ class DocController {
 
         this.loadFirst();
 
+        this.checkViewport();
+
+        if( this.isMobileViewport ) {
+            this.responsiveNavButton();
+            this.responsiveNavAutoClose();
+        }
+
     }
 
     loadFirst() {
@@ -36,6 +48,50 @@ class DocController {
         this.navSetActiveClass(link);
         this.loadContent(docPostId, docHeading);
 
+    }
+
+    responsiveNavButton() {
+
+        const navButtonEl = document.querySelector('.docly-responsive-nav-button');
+        navButtonEl.addEventListener('touchstart', () => {
+            
+            const navEl = document.querySelector('.docly-nav');
+
+            if( ! this.responsiveNavOpen ) {
+                navEl.style.display = 'block';
+                this.responsiveNavOpen = true;
+                const headerHeight = this.getHeaderHeight();
+
+                console.log(headerHeight)
+
+                const navTop = headerHeight + this.getAdminBarHeight();
+                navEl.style.top = navTop + 'px';
+                return;
+            }
+
+            navEl.style.display = 'none';
+            this.responsiveNavOpen = false;
+
+        });
+
+    }
+
+    responsiveNavAutoClose() {
+
+        document.addEventListener('docly_content_loaded', () => {
+            const navEl = document.querySelector('.docly-nav');
+            navEl.style.display = 'none';
+            this.responsiveNavOpen = false;
+        });
+
+    }
+
+    checkViewport() {
+        if (window.innerWidth <= 720) {
+            this.isMobileViewport = true;
+        } else {
+            this.isMobileViewport = false;
+        }
     }
 
     navSetActiveClass( linkEl ) {
@@ -102,6 +158,11 @@ class DocController {
         }
         
 
+    }
+
+    getHeaderHeight() {
+        const headerElement = document.querySelector('.docly-header');
+        return headerElement.clientHeight;
     }
 
     getAdminBarHeight() {
