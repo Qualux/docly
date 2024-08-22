@@ -13,7 +13,10 @@ $template = new \Docly\Template;
         <div id="doc-content">
             <div id="doc-content-heading"></div>
             <div id="doc-content-title"></div>
-            <div id="doc-content-body"></div>   
+            <div class="doc-content">
+                <div id="doc-content-body"></div>  
+                <?php do_action('docly_after_content_body');  ?>
+            </div> 
         </div>
         <div id="doc-toc" class="doc-toc">
             <h2 class="doc-toc__heading">On this page</h2>
