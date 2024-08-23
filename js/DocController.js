@@ -148,6 +148,7 @@ class DocController {
         const headerElement = document.querySelector('.docly-header');
         const navElement = document.querySelector('.docly-nav');
         const tocElement = document.querySelector('.doc-toc');
+        const mainElement = document.querySelector('.docly-main');
         const headerHeight = headerElement.clientHeight;
         const viewportHeight = window.innerHeight;
         const navHeight = viewportHeight - headerHeight - this.getAdminBarHeight();
@@ -161,6 +162,10 @@ class DocController {
         if (headerElement && tocElement) {
             tocElement.style.height = `${navHeight}px`;
             tocElement.style.top = `${navStickyTop}px`;
+        }
+
+        if(mainElement) {
+            mainElement.style.minHeight = `${navHeight}px`;
         }
         
 
