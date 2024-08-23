@@ -12,7 +12,7 @@ namespace Docly;
 
 define('DOCLY_URL', plugin_dir_url(__FILE__));
 define('DOCLY_PATH', plugin_dir_path(__FILE__));
-define('DOCLY_VERSION', '0.0.2');
+define('DOCLY_VERSION', '0.0.3');
 
 class Plugin {
 

@@ -193,6 +193,11 @@ body {
 .doc-toc__item {
     font-size: 0.875rem;
     font-weight: 500;
+    color: var(--docly-color-text);
+}
+
+.doc-toc__item--active {
+    color: var(--docly-color-accent);
 }
 
 .docly-logo__icon {
