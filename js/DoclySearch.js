@@ -114,11 +114,12 @@ class DoclySearch {
         this.clearSearchResults();
 
         if (results.length === 0) {
-            this.resultsContainer.innerHTML = '<p>No results found.</p>';
+            this.resultsContainer.innerHTML = '<p class="docly-search__no-results">No results found.</p>';
             return;
         }
 
         const list = document.createElement('ul');
+        list.classList.add('docly-search-results__list');
         results.forEach(doc => {
             const listItem = document.createElement('li');
             listItem.classList.add('docly-link');

@@ -4,7 +4,7 @@
  * Plugin Name: Docly
  * Author: Qualux LLC.
  * Author URI: https://qualux.io
- * Version: 0.0.2
+ * Version: 0.0.4
  * Description: Simple and modern documentation plugin.
  */
 
@@ -12,7 +12,7 @@ namespace Docly;
 
 define('DOCLY_URL', plugin_dir_url(__FILE__));
 define('DOCLY_PATH', plugin_dir_path(__FILE__));
-define('DOCLY_VERSION', '0.0.3');
+define('DOCLY_VERSION', '0.0.4');
 
 class Plugin {
 
@@ -129,6 +129,9 @@ class Plugin {
              if( ! $color_text ) {
                 $color_text = '#242424';
              }
+
+             // Make modal background color with transparency. 
+             $color_modal_bg = $color_offset . 'CC';
              
             echo "
                 <style>
@@ -137,6 +140,7 @@ class Plugin {
                         --docly-color-accent: {$color_accent};
                         --docly-color-offset: {$color_offset};
                         --docly-color-text: {$color_text};
+                        --docly-color-modal-bg: {$color_modal_bg};
                     }
                 </style>
             ";

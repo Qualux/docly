@@ -1,0 +1,75 @@
+.docly-search-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    background: var(--docly-color-primary);
+    color: var(--docly-color-offset);
+    border-radius: 8px;
+    padding: 8px 16px 8px 8px;
+    box-shadow: none;
+    min-width: 320px;
+    display: flex;
+    justify-content: space-between;
+    border: solid 1px var(--docly-color-offset);
+    transition: border-color 400ms;
+}
+
+.docly-search-button:hover {
+    border-color: var(--docly-color-accent);
+}
+
+.docly-search-button__left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.docly-search-button__key {
+    font-size: 0.875rem;
+}
+
+.docly-search-button__icon {
+
+}
+
+.docly-search-button__text {
+    line-height: 1rem;
+}
+
+.docly-search-button__icon-svg {
+    width: 24px;
+    height: auto;
+    fill: var(--docly-color-accent);
+}
+
+.docly-search {
+    background-color: white;
+    border-radius: 8px;
+}
+
+.docly-search__input {
+    border-radius: 8px;
+    padding: 16px 24px 16px 40px;
+    border: none;
+    font-size: 1.25rem;
+    background-color: white;
+    color: var(--docly-color-offset);
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-width: 400px;
+    line-height: 1rem;
+}
+
+.docly-search__bar {
+    position: relative;
+}
+
+.docly-search__icon {
+    position: absolute;
+    top: calc(50% - 12px);
+    left: 8px;
+    width: 24px;
+    height: auto;
+    fill: var(--docly-color-accent);
+}
