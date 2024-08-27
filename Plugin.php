@@ -88,9 +88,7 @@ class Plugin {
     
     public function template( $template ) {
 
-        $template_slug = get_page_template_slug();
-
-        if ( $template_slug === 'doc_page' ) {
+        if ( is_page( get_option( 'docly_doc_page_id' ) ) ) {
 
             $override_template = locate_template('docly/page.php');
 
@@ -148,8 +146,39 @@ class Plugin {
         });
 
     }
+
+    public static function activate() {
+        
+        if (!self::get_doc_page_option()) {
+            $page_id = wp_insert_post([
+                'post_title'   => 'Docs',
+                'post_name'    => 'docs',
+                'post_status'  => 'publish',
+                'post_type'    => 'page',
+                'post_content' => '',
+            ]);
+
+            // Set the new page ID in the option
+            if ($page_id && !is_wp_error($page_id)) {
+                self::set_doc_page_option($page_id);
+            }
+        }
+
+    }
+
+    public static function get_doc_page_option() {
+        $page_id = get_option('docly_doc_page_id');
+        return $page_id !== false ? $page_id : false;
+    }
+
+    public static function set_doc_page_option($page_id) {
+        update_option('docly_doc_page_id', $page_id);
+    }
     
 }
 
 // Instantiate the Plugin class
 new Plugin();
+
+// Register activation hook.
+register_activation_hook(__FILE__, ['\Docly\Plugin', 'activate']);
