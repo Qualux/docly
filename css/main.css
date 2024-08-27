@@ -94,20 +94,10 @@ body {
     padding: 0 0 0 20px;
 }
 
-.docly-link:hover {
-    color: var(--docly-color-accent);
-}
-
-.docly-link--active {
-    color: var(--docly-color-accent);
-}
-
 #doc-content {
     flex-grow: 1;
     padding: 32px 0 16px 0;
 }
-
-
 
 #doc-content-heading {
     color: var(--docly-color-accent);
@@ -119,6 +109,7 @@ body {
 }
 
 .docly-headings {
+    list-style: none;
     display: flex;
     gap: 24px;
     flex-direction: column;
@@ -127,6 +118,7 @@ body {
 }
 
 .docly-links {
+    list-style: none;
     display: flex;
     gap: 16px;
     flex-direction: column;
@@ -135,14 +127,23 @@ body {
 
 .docly-link {
     transition: color 400ms;
+    
 }
 
 .docly-link__a {
     display: block;
     font-size: 0.9rem;
+    text-decoration: none;
 }
 
+.docly-link:hover,
+.docly-link:hover .docly-link__a {
+    color: var(--docly-color-accent);
+}
 
+.docly-link--active {
+    color: var(--docly-color-accent);
+}
 
 .docly-heading__title {
     font-size: 0.9rem;
@@ -363,6 +364,7 @@ body.admin-bar .doc-toc {
 }
 
 .docly-search-results__list {
+    list-style: none;
     display: flex;
     flex-direction: column;
     gap: 16px;

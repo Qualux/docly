@@ -133,7 +133,7 @@ class Plugin {
              
             echo "
                 <style>
-                    .page-template-doc_page {
+                    :root {
                         --docly-color-primary: {$color_primary};
                         --docly-color-accent: {$color_accent};
                         --docly-color-offset: {$color_offset};
