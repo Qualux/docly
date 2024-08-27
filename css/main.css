@@ -265,7 +265,7 @@ body {
 
 .docly-search__bar {
     position: relative;
-    border-bottom: solid 1px var(--docly-color-accent);
+    border-bottom: solid 1px var(--docly-color-offset);
 }
 
 .docly-search__icon {
