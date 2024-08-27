@@ -7,7 +7,7 @@
                         <?php if (!empty($heading_post->children)) : ?>
                             <ul class="docly-links">
                                 <?php foreach ($heading_post->children as $child_post) : ?>
-                                    <li class="docly-link" doc-post-id="<?php echo $child_post->ID; ?>">
+                                    <li class="docly-link docly-link--bordered" doc-post-id="<?php echo $child_post->ID; ?>">
                                         <a 
                                             href="<?php echo esc_url(get_permalink($child_post->ID)); ?>" 
                                             doc-post-id="<?php echo $child_post->ID; ?>"

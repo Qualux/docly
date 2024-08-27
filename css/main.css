@@ -122,12 +122,25 @@ body {
     display: flex;
     gap: 16px;
     flex-direction: column;
-    padding: 16px 0 16px 32px;
+    padding: 0 0 1 24px;
+    margin: 16px 0 16px 8px;
+    border-left: solid 1px var(--docly-color-offset);
 }
 
 .docly-link {
-    transition: color 400ms;
-    
+    position: relative;
+    transition: color 400ms;  
+}
+
+.docly-link--bordered.docly-link--active::before {
+    content: '';
+    position: absolute;
+    top: 7px;
+    left: -28px;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background-color: var(--docly-color-accent);
 }
 
 .docly-link__a {
