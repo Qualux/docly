@@ -4,7 +4,7 @@
  * Plugin Name: Docly
  * Author: Qualux LLC.
  * Author URI: https://qualux.io
- * Version: 0.0.4
+ * Version: 0.0.5
  * Description: Simple and modern documentation plugin.
  */
 
@@ -12,7 +12,7 @@ namespace Docly;
 
 define('DOCLY_URL', plugin_dir_url(__FILE__));
 define('DOCLY_PATH', plugin_dir_path(__FILE__));
-define('DOCLY_VERSION', '0.0.4');
+define('DOCLY_VERSION', '0.0.5');
 
 class Plugin {
 
