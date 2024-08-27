@@ -88,7 +88,9 @@ class Plugin {
     
     public function template( $template ) {
 
-        if ( is_page( get_option( 'docly_doc_page_id' ) ) ) {
+        $doc_page_id = $this->get_doc_page_option();
+
+        if ( $doc_page_id && is_page( $doc_page_id ) ) {
 
             $override_template = locate_template('docly/page.php');
 
@@ -167,12 +169,12 @@ class Plugin {
     }
 
     public static function get_doc_page_option() {
-        $page_id = get_option('docly_doc_page_id');
+        $page_id = carbon_get_theme_option('docly_doc_page_id');
         return $page_id !== false ? $page_id : false;
     }
 
     public static function set_doc_page_option($page_id) {
-        update_option('docly_doc_page_id', $page_id);
+        carbon_set_theme_option('docly_doc_page_id', $page_id);
     }
     
 }
