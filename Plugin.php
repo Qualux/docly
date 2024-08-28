@@ -34,37 +34,43 @@ class Plugin {
         // Enqueue DocController JS.
         add_action('wp_enqueue_scripts', function() {
 
-            wp_enqueue_script(
-                'docly-doc-controller', 
-                DOCLY_URL . '/js/DocController.js', 
-                [], 
-                DOCLY_VERSION, 
-                true // Load in footer
-            );
+            $doc_page_id = $this->get_doc_page_option();
 
-            wp_enqueue_script(
-                'docly-doc-content-menu-generator', 
-                DOCLY_URL . '/js/TableContentsGenerator.js', 
-                [], 
-                DOCLY_VERSION, 
-                true // Load in footer
-            );
+            if ( $doc_page_id && is_page( $doc_page_id ) ) {
 
-            wp_enqueue_script(
-                'docly-search', 
-                DOCLY_URL . '/js/DoclySearch.js', 
-                [], 
-                DOCLY_VERSION, 
-                true // Load in footer
-            );
+                wp_enqueue_script(
+                    'docly-doc-controller', 
+                    DOCLY_URL . '/js/DocController.js', 
+                    [], 
+                    DOCLY_VERSION, 
+                    true // Load in footer
+                );
 
-            wp_enqueue_style(
-                'docly-main', 
-                DOCLY_URL . '/css/main.css', 
-                [], 
-                DOCLY_VERSION, 
-                'all'
-            );
+                wp_enqueue_script(
+                    'docly-doc-content-menu-generator', 
+                    DOCLY_URL . '/js/TableContentsGenerator.js', 
+                    [], 
+                    DOCLY_VERSION, 
+                    true // Load in footer
+                );
+
+                wp_enqueue_script(
+                    'docly-search', 
+                    DOCLY_URL . '/js/DoclySearch.js', 
+                    [], 
+                    DOCLY_VERSION, 
+                    true // Load in footer
+                );
+
+                wp_enqueue_style(
+                    'docly-main', 
+                    DOCLY_URL . '/css/main.css', 
+                    [], 
+                    DOCLY_VERSION, 
+                    'all'
+                );
+
+            }
 
         });
 
@@ -165,6 +171,8 @@ class Plugin {
                 self::set_doc_page_option($page_id);
             }
         }
+
+        flush_rewrite_rules();
 
     }
 

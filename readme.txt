@@ -13,6 +13,9 @@ Simple and modern documentation plugin for WordPress.
 
 # Changelog #
 
+## v0.0.5 ##
+Changes doc page setting method to save doc page as Carbon option. Adds activation hook to do initial doc page creation.
+
 ## v0.0.4 ##
 Improved search result UI.
 

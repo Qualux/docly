@@ -21,7 +21,7 @@ class DocPostType
             'new_item'           => __('New Doc', 'docly'),
             'edit_item'          => __('Edit Doc', 'docly'),
             'view_item'          => __('View Doc', 'docly'),
-            'all_items'          => __('All Docs', 'docly'),
+            'all_items'          => __('Docs', 'docly'),
             'search_items'       => __('Search Docs', 'docly'),
             'parent_item_colon'  => __('Parent Docs:', 'docly'),
             'not_found'          => __('No docs found.', 'docly'),
@@ -35,6 +35,7 @@ class DocPostType
             'supports'           => ['title', 'editor', 'post-formats', 'revisions', 'page-attributes'],
             'has_archive'        => false,
             'show_in_rest'       => true,
+            'show_in_menu'       => 'docly',
         ];
 
         register_post_type('doc', $args);
