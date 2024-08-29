@@ -135,7 +135,7 @@ body {
 .docly-link--bordered.docly-link--active::before {
     content: '';
     position: absolute;
-    top: 7px;
+    top: calc(50% - 4px);
     left: -28px;
     height: 8px;
     width: 8px;
@@ -146,6 +146,7 @@ body {
 .docly-link__a {
     display: block;
     font-size: 0.9rem;
+    line-height: 1;
     text-decoration: none;
 }
 
@@ -256,7 +257,8 @@ body {
 }
 
 .docly-search-button__text {
-    line-height: 1rem;
+    line-height: 1;
+    font-size: 1rem;
 }
 
 .docly-search-button__icon-svg {

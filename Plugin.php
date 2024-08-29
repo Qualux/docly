@@ -24,6 +24,7 @@ class Plugin {
         require_once DOCLY_PATH . 'lib/DocNav.php';
         require_once DOCLY_PATH . 'lib/Admin.php';
         require_once DOCLY_PATH . 'lib/Template.php';
+        require_once DOCLY_PATH . 'lib/Enqueue.php';
 
         // Instantiate the admin class.
         new \Docly\Admin();
@@ -31,48 +32,9 @@ class Plugin {
         // Instantiate the doc post type.
         new \Docly\DocPostType();
 
-        // Enqueue DocController JS.
-        add_action('wp_enqueue_scripts', function() {
-
-            $doc_page_id = $this->get_doc_page_option();
-
-            if ( $doc_page_id && is_page( $doc_page_id ) ) {
-
-                wp_enqueue_script(
-                    'docly-doc-controller', 
-                    DOCLY_URL . '/js/DocController.js', 
-                    [], 
-                    DOCLY_VERSION, 
-                    true // Load in footer
-                );
-
-                wp_enqueue_script(
-                    'docly-doc-content-menu-generator', 
-                    DOCLY_URL . '/js/TableContentsGenerator.js', 
-                    [], 
-                    DOCLY_VERSION, 
-                    true // Load in footer
-                );
-
-                wp_enqueue_script(
-                    'docly-search', 
-                    DOCLY_URL . '/js/DoclySearch.js', 
-                    [], 
-                    DOCLY_VERSION, 
-                    true // Load in footer
-                );
-
-                wp_enqueue_style(
-                    'docly-main', 
-                    DOCLY_URL . '/css/main.css', 
-                    [], 
-                    DOCLY_VERSION, 
-                    'all'
-                );
-
-            }
-
-        });
+        // Enqueue Init.
+        new \Docly\Enqueue();
+        
 
         // Register the page template
         add_filter('theme_page_templates', [$this, 'register_page_template']);
@@ -117,24 +79,24 @@ class Plugin {
         add_action('wp_head', function() {
 
             $color_primary = carbon_get_theme_option( 'docly_color_primary' );
-             if( ! $color_primary ) {
+            if( ! $color_primary ) {
                 $color_primary = '#FFFFFF';
-             }
+            }
 
-             $color_accent = carbon_get_theme_option( 'docly_color_accent' );
-             if( ! $color_accent ) {
-                $color_accent = '#0C8CE9';
-             }
+            $color_accent = carbon_get_theme_option( 'docly_color_accent' );
+            if( ! $color_accent ) {
+            $color_accent = '#0C8CE9';
+            }
 
-             $color_offset = carbon_get_theme_option( 'docly_color_offset' );
-             if( ! $color_offset ) {
-                $color_offset = '#737373';
-             }
+            $color_offset = carbon_get_theme_option( 'docly_color_offset' );
+            if( ! $color_offset ) {
+            $color_offset = '#353535';
+            }
 
-             $color_text = carbon_get_theme_option( 'docly_color_text' );
-             if( ! $color_text ) {
-                $color_text = '#242424';
-             }
+            $color_text = carbon_get_theme_option( 'docly_color_text' );
+            if( ! $color_text ) {
+            $color_text = '#242424';
+            }
 
              // Make modal background color with transparency. 
              $color_modal_bg = $color_offset . 'CC';

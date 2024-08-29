@@ -124,7 +124,7 @@ class DoclySearch {
             const listItem = document.createElement('li');
             listItem.classList.add('docly-link');
             listItem.setAttribute('doc-post-id', doc.id);
-            listItem.innerHTML = `<a doc-post-id="${doc.id}" href="${doc.link}">${doc.title.rendered}</a>`;
+            listItem.innerHTML = `<a doc-post-id="${doc.id}" href="${doc.link}" class="docly-link__a">${doc.title.rendered}</a>`;
             list.appendChild(listItem);
         });
 
